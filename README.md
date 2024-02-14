@@ -1,1 +1,1 @@
-Pair 6 Tobeto Final Project 
+Pair 6 Tobeto Project 
