@@ -8,7 +8,7 @@ import pytest
 import openpyxl
 from constants import globalConstants as c
 
-class Test_Tobeto_Login():
+class TestTobetoLogin():
   def setup_method(self):
     self.driver = webdriver.Chrome()
     self.driver.get(c.BASE_URL)
@@ -19,8 +19,8 @@ class Test_Tobeto_Login():
     self.driver.quit()
 
 
-  def getData():
-      excel = openpyxl.load_workbook(c.Login_xlsx)
+  def get_data_valid():
+      excel = openpyxl.load_workbook(c.VALID_LOGIN_XLSX)
       sheet = excel["Sheet1"] 
       rows = sheet.max_row 
       data = []
@@ -31,8 +31,8 @@ class Test_Tobeto_Login():
       
       return data
   
-  def getData1():
-      excel = openpyxl.load_workbook(c.Login1_xlsx)
+  def get_data_invalid():
+      excel = openpyxl.load_workbook(c.INVALID_LOGIN_XLSX)
       sheet = excel["Sheet1"] 
       rows = sheet.max_row 
       data = []
@@ -60,7 +60,7 @@ class Test_Tobeto_Login():
     assert error_message2.text == c.EMPTYMESSAGE
     self.driver.close()
 
-  @pytest.mark.parametrize("email,password",getData())
+  @pytest.mark.parametrize("email,password",get_data_valid())
   def test_valid_Login(self,email,password):
     email_input = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME)))
     email_input.click()
@@ -76,7 +76,7 @@ class Test_Tobeto_Login():
     self.driver.close()
   
 
-  @pytest.mark.parametrize("email,password",getData1()) 
+  @pytest.mark.parametrize("email,password",get_data_invalid()) 
   def test_invalid_login(self,email,password):
    email_input = WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME)))
    email_input.click()
