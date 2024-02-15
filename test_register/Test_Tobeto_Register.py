@@ -37,7 +37,7 @@ class TestTobetoRegister():
       return data
   
   def getData1():
-      excel = openpyxl.load_workbook(c.REGISTER1_xlsx)
+      excel = openpyxl.load_workbook(c.REGISTER1_XLSX)
       sheet = excel["Sheet1"] 
       rows = sheet.max_row 
       data = []
@@ -52,7 +52,7 @@ class TestTobetoRegister():
       return data
   
   def getData2():
-      excel = openpyxl.load_workbook(c.REGISTER2_xlsx)
+      excel = openpyxl.load_workbook(c.REGISTER2_XLSX)
       sheet = excel["Sheet1"] 
       rows = sheet.max_row 
       data = []
