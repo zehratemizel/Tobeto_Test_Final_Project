@@ -35,4 +35,7 @@ EMPTY_PHONE_NUMBER = "Doldurulması zorunlu alan*"
 MISSING_PASSWORD = "• Şifreniz en az 6 karakterden oluşmalıdır."
 UNMATCHED_PASSWORD = "• Şifreler eşleşmedi"
 INVALID_INFORMATIONS = "• 2 errors occured"
-
+SURVEY_BUTTON_XPATH = "//*[@id='mySurvey-tab']"
+SURVEY_MESSAGE_XPATH = "//*[@id='mySurvey-tab-pane']/div/div/p"
+SURVEY_MESSAGE = "Atanmış herhangi bir anketiniz bulunmamaktadır"
+SURVEY_XLSX = "data/Survey.xlsx"
