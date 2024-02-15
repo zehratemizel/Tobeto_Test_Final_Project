@@ -7,8 +7,7 @@ from selenium.webdriver.support import expected_conditions as ec
 import pytest
 import openpyxl
 from constants import globalConstants as c
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
+
 
 class TestTobetoPlatform():
   def setup_method(self):
@@ -34,7 +33,7 @@ class TestTobetoPlatform():
 
 
   @pytest.mark.parametrize("email,password",get_data_survey())
-  def test_survey(self,email,password): 
+  def test_survey_button(self,email,password): 
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME,c.EMAIL_NAME))).send_keys(email)
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME,c.PASSWORD_NAME))).send_keys(password)
     self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH).click()
@@ -44,4 +43,19 @@ class TestTobetoPlatform():
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.XPATH, c.SURVEY_BUTTON_XPATH))).click()
     survey_message = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.SURVEY_MESSAGE_XPATH))) 
     assert survey_message.text == c.SURVEY_MESSAGE
+    sleep(3)
+
+
+  @pytest.mark.parametrize("email,password",get_data_survey())
+  def test_catalog_button(self,email,password): 
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME,c.EMAIL_NAME))).send_keys(email)
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME,c.PASSWORD_NAME))).send_keys(password)
+    self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH).click()
+    valid_login = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.VALID_LOGIN_XPATH)))
+    assert valid_login.text == c.VALID_LOGIN
+    WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located((By.XPATH, c.CATALOG_BUTTON_XPATH))).click()
+    WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located((By.ID,c.EDUCATION_ID))).send_keys("Tobeto")
+    WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located((By.XPATH, c.SEARCH_BUTTON))).click()
+    catalog_message = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.CATALOG_MESSAGE_XPATH))) 
+    assert catalog_message.text == c.CATALOG_MESSAGE
     sleep(3)
