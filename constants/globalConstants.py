@@ -60,3 +60,5 @@ STARTUP_XPATH = "//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[
 CONTINUED_XPATH = "//*[@id='__next']/div/main/section/div/div/div[2]/form/div/div[6]/label[2]/input"
 EXPERIENCE_MESSAGE_XPATH = "//*[@id='__next']/div/div[3]/div/div[2]"
 EXPERIENCE_MESSAGE = "• Deneyim eklendi."
+EMAIL = "softwaretestdemotobeto@gmail.com"
+PASSWORD = "wx6nn6ER3q.BY67"
