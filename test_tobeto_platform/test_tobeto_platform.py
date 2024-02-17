@@ -21,7 +21,7 @@ class TestTobetoPlatform():
 
 
   def get_data_survey():
-    excel = openpyxl.load_workbook(c.SURVEY_XLSX)
+    excel = openpyxl.load_workbook(c.VALID_LOGIN_XLSX)
     sheet = excel["Sayfa1"] 
     data = []
     for i in range(2,3):
