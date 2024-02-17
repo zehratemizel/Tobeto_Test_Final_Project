@@ -36,8 +36,8 @@ class TestTobetoRegister():
 
       return data
   
-  def get_data_register1():
-      excel = openpyxl.load_workbook(c.REGISTER1_XLSX)
+  def get_data_without_phone():
+      excel = openpyxl.load_workbook(c.REGISTER_PHONE_XLSX)
       sheet = excel["Sheet1"] 
       rows = sheet.max_row 
       data = []
@@ -51,8 +51,8 @@ class TestTobetoRegister():
 
       return data
   
-  def get_data_register2():
-      excel = openpyxl.load_workbook(c.REGISTER2_XLSX)
+  def get_data_without_password():
+      excel = openpyxl.load_workbook(c.REGISTER_PASSWORD_XLSX)
       sheet = excel["Sheet1"] 
       rows = sheet.max_row 
       data = []
@@ -105,15 +105,15 @@ class TestTobetoRegister():
     self.driver.close()
 
 
-  @pytest.mark.parametrize("firstName,lastName,email,password,passwordAgain", get_data_register1()) 
+  @pytest.mark.parametrize("firstName,lastName,email,password,passwordAgain", get_data_without_phone()) 
   def test_minPhoneNumber(self,firstName,lastName,email,password,passwordAgain):
     self.driver.find_element(By.LINK_TEXT, c.REGISTER).click()
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.FIRSTNAME_NAME))).send_keys(firstName)
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.LASTNAME_NAME))).send_keys(lastName)
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME))).send_keys(email)
-    self.driver.execute_script("window.scrollTo(0,500)")
+    #self.driver.execute_script("window.scrollTo(0,500)")
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
-    self.driver.execute_script("window.scrollTo(0,500)")
+    #self.driver.execute_script("window.scrollTo(0,500)")
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORDAGAIN_NAME))).send_keys(passwordAgain)
     self.driver.execute_script("window.scrollTo(0,500)")
     sleep(1)
@@ -132,7 +132,7 @@ class TestTobetoRegister():
     assert min_phone_number.text == c.MIN_PHONE_NUMBER
     self.driver.close()
 
-  @pytest.mark.parametrize("firstName,lastName,email,password,passwordAgain", get_data_register1()) 
+  @pytest.mark.parametrize("firstName,lastName,email,password,passwordAgain", get_data_without_phone()) 
   def test_maxPhoneNumber(self,firstName,lastName,email,password,passwordAgain):
     self.driver.find_element(By.LINK_TEXT, c.REGISTER).click()
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.FIRSTNAME_NAME))).send_keys(firstName)
@@ -160,7 +160,7 @@ class TestTobetoRegister():
     self.driver.close()
   
 
-  @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_register2()) 
+  @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_without_password()) 
   def test_Missing_Password(self,firstName,lastName,email,phoneNumber):
     self.driver.find_element(By.LINK_TEXT, c.REGISTER).click()
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.FIRSTNAME_NAME))).send_keys(firstName)
@@ -190,7 +190,7 @@ class TestTobetoRegister():
 
 
 
-  @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_register2()) 
+  @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_without_password()) 
   def test_Unmatched_Password(self,firstName,lastName,email,phoneNumber):
     self.driver.find_element(By.LINK_TEXT, c.REGISTER).click()
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.FIRSTNAME_NAME))).send_keys(firstName)
@@ -218,7 +218,7 @@ class TestTobetoRegister():
     self.driver.close()
 
 
-  @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_register2()) 
+  @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_without_password()) 
   def test_Invalid_Informations(self,firstName,lastName,email,phoneNumber):
     self.driver.find_element(By.LINK_TEXT, c.REGISTER).click()
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.FIRSTNAME_NAME))).send_keys(firstName)
