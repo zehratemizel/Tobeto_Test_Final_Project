@@ -1,6 +1,6 @@
 BASE_URL = "https://tobeto.com/giris"
 VALID_LOGIN_XLSX = "data/Valid_Login.xlsx"
-INVALID_LOGIN_XLSX = "data/Invalid_Login1.xlsx"
+INVALID_LOGIN_XLSX = "data/Invalid_Login.xlsx"
 REGISTER_XLSX = "data/Register.xlsx"
 REGISTER1_XLSX = "data/Register_Phone.xlsx"
 REGISTER2_XLSX = "data/Register_Password.xlsx"
