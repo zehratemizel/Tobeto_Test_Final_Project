@@ -1,9 +1,9 @@
 BASE_URL = "https://tobeto.com/giris"
 VALID_LOGIN_XLSX = "data/Valid_Login.xlsx"
-INVALID_LOGIN_XLSX = "data/Invalid_Login1.xlsx"
+INVALID_LOGIN_XLSX = "data/Invalid_Login.xlsx"
 REGISTER_XLSX = "data/Register.xlsx"
-REGISTER1_XLSX = "data/Register_Phone.xlsx"
-REGISTER2_XLSX = "data/Register_Password.xlsx"
+REGISTER_PHONE_XLSX = "data/Register_Phone.xlsx"
+REGISTER_PASSWORD_XLSX = "data/Register_Password.xlsx"
 EMPTYMESSAGE_XPATH_1 = "//*[@id='__next']/div/main/section/div/div/div[1]/div/form/p[1]"
 EMPTYMESSAGE_XPATH_2 = "//*[@id='__next']/div/main/section/div/div/div[1]/div/form/p[2]"
 EMPTYMESSAGE = "Doldurulması zorunlu alan*"
@@ -61,8 +61,12 @@ CONTINUED_XPATH = "//*[@id='__next']/div/main/section/div/div/div[2]/form/div/di
 EXPERIENCE_MESSAGE_XPATH = "//*[@id='__next']/div/div[3]/div/div[2]"
 EXPERIENCE_MESSAGE = "• Deneyim eklendi."
 EMAIL = "softwaretestdemotobeto@gmail.com"
+<<<<<<< HEAD
 PASSWORD = "wx6nn6ER3q.BY67"
 CALENDAR_SEARCH_EVENT_ID = "search-event"
 CALENDAR_COURSES_ITEM_CSS = "td[class='fc-day fc-day-tue fc-day-past fc-day-other fc-daygrid-day'] a[class='fc-event fc-event-start fc-event-end fc-event-past eventEnded fc-daygrid-event fc-daygrid-dot-event']"
 CATALOG_NAVBAR_BUTTON_XPATH = "//a[contains(text(),\'Katalog\')]"
 CATALOG_SEARCH_BUTTON_XPATH = "/html/body/div[1]/div/main/div[1]/div/div/div/div[2]/button/div"
+=======
+PASSWORD = "wx6nn6ER3q.BY67"
+>>>>>>> origin

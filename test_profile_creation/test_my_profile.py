@@ -22,7 +22,7 @@ class TestTobetoPlatform():
 
   def get_data_survey():
     excel = openpyxl.load_workbook(c.VALID_LOGIN_XLSX)
-    sheet = excel["Sayfa1"] 
+    sheet = excel["Sheet1"] 
     data = []
     for i in range(2,3):
         email = sheet.cell(i,1).value
@@ -44,7 +44,7 @@ class TestTobetoPlatform():
     WebDriverWait(self.driver, 20).until(ec.visibility_of_element_located((By.XPATH, c.EDIT_BUTTON_XPATH))).click()
     tc_message = WebDriverWait(self.driver,20).until(ec.visibility_of_element_located((By.XPATH, c.TC_MESSAGE_XPATH))) 
     assert tc_message.text == c.TC__MESSAGE
-    sleep(3)
+
 
 
   @pytest.mark.parametrize("email,password",get_data_survey())
@@ -63,7 +63,7 @@ class TestTobetoPlatform():
     sleep(3)
     error_message = WebDriverWait(self.driver,40).until(ec.visibility_of_element_located((By.XPATH, c.ERROR_MESSAGE_XPATH))) 
     assert error_message.text == c.ERROR_MESSAGE
-    sleep(3)
+
 
 
   @pytest.mark.parametrize("email,password",get_data_survey())
@@ -90,7 +90,7 @@ class TestTobetoPlatform():
     WebDriverWait(self.driver, 20).until(ec.visibility_of_element_located((By.XPATH, c.SAVE_BUTTON_XPATH))).click()
     experiense_message = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.EXPERIENCE_MESSAGE_XPATH))) 
     assert experiense_message.text == c.EXPERIENCE_MESSAGE
-    sleep(3)
+ 
 
 
 
