@@ -9,7 +9,7 @@ import openpyxl
 from constants import globalConstants as c
 
 
-class TestTobetoRegister():
+class TestRegister():
   def setup_method(self):
     self.driver = webdriver.Chrome()
     self.driver.get(c.BASE_URL)
