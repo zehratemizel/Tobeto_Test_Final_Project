@@ -86,7 +86,7 @@ class TestRegister():
     self.driver.execute_script("window.scrollTo(0,600)")
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
     self.driver.execute_script("window.scrollTo(0,600)")
-    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORDAGAIN_NAME))).send_keys(passwordAgain)
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_AGAIN_NAME))).send_keys(passwordAgain)
     self.driver.execute_script("window.scrollTo(0,600)")
     sleep(1)
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.REGISTER_XPATH))).click()
@@ -102,7 +102,6 @@ class TestRegister():
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.FINAL_REGISTER_XPATH))).click()
     cant_register = WebDriverWait(self.driver, 20).until(ec.visibility_of_element_located((By.CLASS_NAME, "toast-body")))
     assert cant_register.text == c.CANT_REGISTER
-    self.driver.close()
 
 
   @pytest.mark.parametrize("firstName,lastName,email,password,passwordAgain", get_data_without_phone()) 
@@ -114,7 +113,7 @@ class TestRegister():
     #self.driver.execute_script("window.scrollTo(0,500)")
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
     #self.driver.execute_script("window.scrollTo(0,500)")
-    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORDAGAIN_NAME))).send_keys(passwordAgain)
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_AGAIN_NAME))).send_keys(passwordAgain)
     self.driver.execute_script("window.scrollTo(0,500)")
     sleep(1)
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.REGISTER_XPATH))).click()
@@ -130,7 +129,6 @@ class TestRegister():
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.FINAL_REGISTER_XPATH))).click()
     min_phone_number = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.MIN_PHONE_NUMBER_XPATH)))
     assert min_phone_number.text == c.MIN_PHONE_NUMBER
-    self.driver.close()
 
   @pytest.mark.parametrize("firstName,lastName,email,password,passwordAgain", get_data_without_phone()) 
   def test_maxPhoneNumber(self,firstName,lastName,email,password,passwordAgain):
@@ -141,7 +139,7 @@ class TestRegister():
     self.driver.execute_script("window.scrollTo(0,500)")
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
     self.driver.execute_script("window.scrollTo(0,500)")
-    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORDAGAIN_NAME))).send_keys(passwordAgain)
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_AGAIN_NAME))).send_keys(passwordAgain)
     self.driver.execute_script("window.scrollTo(0,500)")
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.REGISTER_XPATH))).click()
     self.driver.find_element(By.NAME, "contact").click()
@@ -157,7 +155,6 @@ class TestRegister():
     WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.MAX_PHONE_NUMBER_XPATH)))
     max_phone_number = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.MAX_PHONE_NUMBER_XPATH)))
     assert max_phone_number.text == c.MAX_PHONE_NUMBER
-    self.driver.close()
   
 
   @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_without_password()) 
@@ -184,10 +181,6 @@ class TestRegister():
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.FINAL_REGISTER_XPATH))).click()
     missing_password = self.driver.find_element(By.CLASS_NAME , "toast-body")
     assert missing_password.text == c.MISSING_PASSWORD
-    sleep(5)
-    self.driver.close()
-
-
 
 
   @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_without_password()) 
@@ -215,7 +208,6 @@ class TestRegister():
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.FINAL_REGISTER_XPATH))).click()
     unmatched_password = self.driver.find_element(By.CLASS_NAME , "toast-body")
     assert unmatched_password.text == c.UNMATCHED_PASSWORD
-    self.driver.close()
 
 
   @pytest.mark.parametrize("firstName,lastName,email,phoneNumber", get_data_without_password()) 
@@ -243,4 +235,3 @@ class TestRegister():
     WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.FINAL_REGISTER_XPATH))).click()
     invalid_informations = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.CLASS_NAME , "toast-body")))
     assert invalid_informations.text == c.INVALID_INFORMATIONS
-    self.driver.close()

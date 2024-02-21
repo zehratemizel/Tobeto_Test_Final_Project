@@ -43,7 +43,6 @@ class TestTobetoPlatform():
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.XPATH, c.SURVEY_BUTTON_XPATH))).click()
     survey_message = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.SURVEY_MESSAGE_XPATH))) 
     assert survey_message.text == c.SURVEY_MESSAGE
-    sleep(3)
 
 
   @pytest.mark.parametrize("email,password",get_data_survey())
@@ -58,4 +57,3 @@ class TestTobetoPlatform():
     WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located((By.XPATH, c.SEARCH_BUTTON))).click()
     catalog_message = WebDriverWait(self.driver,10).until(ec.visibility_of_element_located((By.XPATH, c.CATALOG_MESSAGE_XPATH))) 
     assert catalog_message.text == c.CATALOG_MESSAGE
-    sleep(3)
