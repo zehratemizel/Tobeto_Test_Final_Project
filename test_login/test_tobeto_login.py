@@ -42,17 +42,7 @@ class TestTobetoLogin():
           data.append((email,password))
       
       return data
-
   
-  @pytest.mark.parametrize("email,password",[("","")])
-  def test_empty_login(self,email,password):
-    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME))).send_keys(email)
-    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
-    self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH).click()
-    error_email_message = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.EMPTY_MESSAGE_EMAIL_XPATH))) 
-    assert error_email_message.text == c.EMPTY_MESSAGE
-    error_password_message = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.EMPTY_MESSAGE_PASSWORD_XPATH))) 
-    assert error_password_message.text == c.EMPTY_MESSAGE, self.driver.save_screenshot("test_login/test_empty_login.png")
 
   @pytest.mark.parametrize("email,password",get_data_valid())
   def test_valid_Login(self,email,password):
@@ -60,15 +50,23 @@ class TestTobetoLogin():
     WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
     self.driver.find_element(By.XPATH, c.LOGIN_BUTTON_XPATH).click()
     valid_login = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, c.VALID_LOGIN_XPATH)))
-    assert valid_login.text == c.VALID_LOGIN
-    self.driver.save_screenshot("./valid.png")
+    assert valid_login.text == c.VALID_LOGIN, self.driver.save_screenshot("test_login/valid.png")
   
 
   @pytest.mark.parametrize("email,password",get_data_invalid()) 
   def test_invalid_login(self,email,password):
-   WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME))).send_keys(email)
-   WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
-   self.driver.find_element(By.XPATH, c.LOGIN_BUTTON_XPATH).click()
-   invalid_login = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.INVALID_LOGIN_XPATH)))
-   assert invalid_login.text == c.INVALID_LOGIN
-   self.driver.save_screenshot("./invalid.png")
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME))).send_keys(email)
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
+    self.driver.find_element(By.XPATH, c.LOGIN_BUTTON_XPATH).click()
+    invalid_login = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.INVALID_LOGIN_XPATH)))
+    assert invalid_login.text == c.INVALID_LOGIN
+    self.driver.save_screenshot("./invalid.png")
+
+
+  @pytest.mark.parametrize("email,password",[("","")])
+  def test_empty_login(self,email,password):
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.EMAIL_NAME))).send_keys(email)
+    WebDriverWait(self.driver, 5).until(ec.visibility_of_element_located((By.NAME, c.PASSWORD_NAME))).send_keys(password)
+    self.driver.find_element(By.XPATH,c.LOGIN_BUTTON_XPATH).click()
+    error_email_message = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,c.EMPTY_MESSAGE_EMAIL_XPATH))) 
+    assert error_email_message.text == c.EMPTY_MESSAGE, self.driver.save_screenshot("test_login/test_empty_login.png")
