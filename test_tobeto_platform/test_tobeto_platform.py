@@ -22,7 +22,7 @@ class TestTobetoPlatform():
 
   def get_data_survey():
     excel = openpyxl.load_workbook(c.VALID_LOGIN_XLSX)
-    sheet = excel["Sayfa1"] 
+    sheet = excel["Sheet1"] 
     data = []
     for i in range(2,3):
         email = sheet.cell(i,1).value
